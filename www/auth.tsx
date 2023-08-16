@@ -19,7 +19,7 @@ const makeUrl = (endpoint: string): string => {
 }
 
 const fetchToken = (username: string, password: string): Promise<Response> => {
-  const url = makeUrl("/token/");
+  const url = makeUrl("token/");
   return fetch(url, {
     method: "POST",
     body: JSON.stringify({ username, password }),
@@ -28,11 +28,12 @@ const fetchToken = (username: string, password: string): Promise<Response> => {
     },
     credentials: "include"
   });
+  // return new Promise(()=>{});
 };
 
 
 const fetchNewToken = (): Promise<Response> => {
-  const url = makeUrl("/token/refresh/");
+  const url = makeUrl("token/refresh/");
   return fetch(url, {
     method: "POST",
     headers: {
@@ -43,7 +44,7 @@ const fetchNewToken = (): Promise<Response> => {
 };
 
 async function fetchUser(token: string): Promise<Response> {
-  const url = makeUrl("/me/")
+  const url = makeUrl("me/")
   return fetch(url, {
     method: "GET",
     headers: {
